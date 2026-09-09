@@ -1,0 +1,380 @@
+    :root {
+      --azul-1: #4F88AC;
+      --azul-2: #3FAAEF;
+      --azul-3: #8BEEFA;
+      --azul-4: #255BAC;
+      --azul-5: #DEE5F2;
+      --texto: #1a2c3d;
+    }
+
+    header {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background: linear-gradient(90deg, var(--azul-1) 0%, var(--azul-2) 35%, var(--azul-4) 100%);
+      color: white;
+    }
+    body {
+      overflow-x: hidden; /* Evita el desbordamiento horizontal */
+      background: #ffffff;
+      color: var(--texto);
+    }
+    .progress {
+      height: 15px; 
+    }
+    
+    .progress-bar {
+      border-radius: 0;
+    }
+
+    h1, h2, h3, h4, h5 {
+      color: var(--azul-4);
+    }
+
+    .container-fluid {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background: transparent;
+      padding: 18px 0 12px 0;
+      min-height: 120px;
+    }
+    .logo img {
+      width: 130px;
+      height: 130px;
+      min-width: 130px;
+      object-fit: contain;
+      display: block;
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+      flex-shrink: 0;
+    }
+
+    .profile-info {
+      text-align: center;
+      flex: 1;
+      max-width: 1200px;
+    }
+
+    .profile-info h1 {
+      font-size: 3.1rem;
+      font-weight: bold;
+      margin: 0;
+      line-height: 1.1;
+      color: white;
+    }
+
+    .profile-info h3 {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 15px;
+      color: white;
+    }
+
+    .profile-info p {
+      color: white;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: var(--azul-3);
+    }
+
+    .social-footer {
+      gap: 14px;
+    }
+
+    .social-footer-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--azul-4);
+      color: #ffffff;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .social-footer-link:hover {
+      background: var(--azul-2);
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    .promociones-section {
+      padding: 30px 0 20px;
+      background: #ffffff;
+    }
+
+    .promociones-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(37, 91, 172, 0.18);
+      border: 2px solid rgba(37, 91, 172, 0.2);
+      background: #ffffff;
+    }
+
+    #carouselPromociones {
+      max-width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    #carouselPromociones .carousel-inner {
+      height: 420px;
+      background: #ffffff;
+    }
+
+    #carouselPromociones .carousel-item {
+      height: 100%;
+    }
+
+    #carouselPromociones .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #ffffff;
+      padding: 0;
+    }
+
+    .promociones-section h2 {
+      color: var(--azul-4);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      font-size: clamp(2.3rem, 4vw, 4rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .medicos-section h2 {
+      color: var(--azul-4);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      font-size: clamp(2.3rem, 4vw, 4rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .medicos-section {
+      background: #f4f9ff;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    .especialidades-barra {
+      background: #f8fbff;
+      border: 1px solid rgba(37, 91, 172, 0.2);
+      border-radius: 12px;
+      padding: 20px 15px;
+      height: 100%;
+      box-shadow: 0 2px 8px rgba(37, 91, 172, 0.08);
+    }
+
+    .especialidades-barra h3 {
+      color: var(--azul-4);
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .especialidad {
+      color: var(--azul-4);
+      font-weight: 600;
+      padding: 10px 12px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+      text-align: left;
+    }
+
+    .especialidad:hover,
+    .especialidad.active {
+      background: #eaf6ff;
+      color: var(--azul-4);
+      text-decoration: none;
+      border-left: 4px solid var(--azul-4);
+      padding-left: 8px;
+    }
+
+    .descripcion-especialidad {
+      margin-top: 18px;
+      padding: 12px 0 0 0;
+      border-top: 1px solid rgba(37, 91, 172, 0.2);
+    }
+
+    .descripcion-especialidad p {
+      margin: 0;
+      color: var(--texto);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .card-medico {
+      background: white;
+      border: 1px solid rgba(37, 91, 172, 0.15);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(37, 91, 172, 0.08);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .medico-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #ffffff;
+      border-bottom: 2px solid rgba(37, 91, 172, 0.2);
+      padding: 0;
+    }
+
+    .card-medico .card-body {
+      padding: 20px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+    }
+
+    .card-medico h4 {
+      color: var(--azul-4);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      min-height: 52px;
+    }
+
+    .card-medico p {
+      color: var(--texto);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .card-medico .btn-primary {
+      background: linear-gradient(90deg, var(--azul-4), var(--azul-2));
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      padding: 10px 14px;
+    }
+
+    @media (max-width: 575.98px) {
+      .especialidades-barra,
+      .especialidad-detalle,
+      .card-medico {
+        width: 100%;
+      }
+    }
+
+    #carouselPromociones .carousel-control-prev,
+    #carouselPromociones .carousel-control-next {
+      width: 8%;
+    }
+
+    #carouselPromociones .carousel-control-prev-icon,
+    #carouselPromociones .carousel-control-next-icon {
+      background-color: rgba(37, 91, 172, 0.55);
+      border-radius: 50%;
+      padding: 20px;
+    }
+
+    .navbar {
+      background: linear-gradient(90deg, var(--azul-4) 0%, var(--azul-2) 100%) !important;
+      border-bottom: 2px solid var(--azul-3);
+    }
+
+    .btn-primary {
+      background-color: var(--azul-4);
+      border-color: var(--azul-4);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--azul-2);
+      border-color: var(--azul-2);
+    }
+
+    .registro-section {
+      padding: 60px 0;
+      background: linear-gradient(180deg, #ffffff 0%, var(--azul-5) 100%);
+    }
+
+    .registro-container {
+      max-width: 900px;
+      padding: 38px 42px 42px;
+      background: #ffffff;
+      border-top: 6px solid var(--azul-4);
+      border-radius: 12px;
+      box-shadow: 0 5px 18px rgba(37, 91, 172, 0.16);
+    }
+
+    .registro-container h1,
+    .registro-container h2 {
+      color: var(--azul-4);
+      font-weight: 800;
+    }
+
+    .registro-container h1 {
+      margin-bottom: 10px;
+    }
+
+    .registro-container .lead {
+      color: var(--texto);
+      margin-bottom: 30px;
+    }
+
+    .registro-container .form-label,
+    .registro-container legend {
+      color: var(--texto);
+      font-weight: 600;
+    }
+
+    .registro-container .form-control,
+    .registro-container .form-select {
+      border: 1px solid rgba(37, 91, 172, 0.3);
+      border-radius: 7px;
+    }
+
+    .registro-container .form-control:focus,
+    .registro-container .form-select:focus {
+      border-color: var(--azul-2);
+      box-shadow: 0 0 0 0.2rem rgba(63, 170, 239, 0.2);
+    }
+
+    .registro-container .form-check-label {
+      color: var(--texto);
+    }
+
+    .registro-container .btn-primary {
+      background: linear-gradient(90deg, var(--azul-4), var(--azul-2));
+      border: none;
+      font-weight: 700;
+      padding: 10px 22px;
+    }
+
+    @media (max-width: 575.98px) {
+      .registro-container {
+        padding: 30px 20px;
+      }
+    }

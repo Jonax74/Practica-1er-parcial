@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilos.css">
+  <title>Clinica la ultima esperanza</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="validaciones.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <style>    
+  </style>
+
+</head>
+<body>
+
+  <header> 
+    <div class="container-fluid">
+            <div class="logo">
+                <img src="images/logus.png" alt="Logo del servicio médico" class="img-fluid">  
+            <div class="align-items-center">
+              <div class="profile-info">
+                <h1>CLINICALA ULTIMA ESPERANZA</h1>
+                <h3>Somos una clinica especializada en la atención de pacientes con enfermedades respiratorias y cardiovasculares.</h3>
+                <p>Sistema especializado en la gestión de pacientes y la atención médica integral.</p>              
+                <div class="social-icons" aria-label="Redes sociales de la clínica">
+                  <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </div>
+              </div>
+            </div> 
+    </div>
+</header>
+
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#seccion1">Nuestras Promociones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#seccion2">Nuestros Médicos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#seccion3">Registro de Pacientes</a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="seccion1" class="promociones-section">
+    <div class="container">
+      <h2 class="text-center mb-4">Nuestras Promociones</h2>
+      <div class="promociones-container">
+        <div id="carouselPromociones" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="images/promo1.jpg" class="d-block w-100" alt="Promoción 1">
+            </div>
+            <div class="carousel-item">
+              <img src="images/promo2.jpg" class="d-block w-100" alt="Promoción 2">
+            </div>
+            <div class="carousel-item">
+              <img src="images/promo3.jpg" class="d-block w-100" alt="Promoción 3">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselPromociones" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselPromociones" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="seccion2" class="medicos-section py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Médicos de la clínica</h2>
+
+      <div class="row g-4 align-items-start">
+        <aside class="col-12 col-sm-2 col-md-4">
+          <div class="especialidades-barra">
+            <h3>Especialidades</h3>
+            <nav class="nav flex-column">
+              <a class="nav-link especialidad active" href="#" data-especialidad="terapia-neural">Terapia Neural</a>
+              <a class="nav-link especialidad" href="#" data-especialidad="quiropraxia">Quiropraxia</a>
+              <a class="nav-link especialidad" href="#" data-especialidad="fisioterapia">Fisioterapia</a>
+              <a class="nav-link especialidad" href="#" data-especialidad="nutricion">Nutrición y Dietética Terapéutica</a>
+            </nav>
+
+            <div class="descripcion-especialidad mt-4">
+              <p id="especialidadTexto">
+                La Terapia Neural regula el sistema nervioso mediante anestésicos locales.
+              </p>
+            </div>
+          </div>
+        </aside>
+
+        <div class="col-12 col-sm-10 col-md-8">
+          <div class="row g-4">
+            <div class="col-12 col-sm-6 col-md-4">
+              <article class="card-medico">
+                <img src="images/medico1.jpg" alt="Dr. Juan Pérez" class="medico-img">
+                <div class="card-body">
+                  <h4>Dr. Juan Pérez</h4>
+                  <p>Especialista en Fisioterapia Deportiva.</p>
+                  <p>Comprometido con tu recuperación.</p>
+                  <button class="btn btn-primary w-100 mt-3">Agendar Cita</button>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <article class="card-medico">
+                <img src="images/medico2.jpg" alt="Dra. Karen Sofia Ortiz" class="medico-img">
+                <div class="card-body">
+                  <h4>Dra. Karen Sofia Ortiz.</h4>
+                  <p>Especialista en Quiropraxia.</p>
+                  <p>La salud es fundamental.</p>
+                  <button class="btn btn-primary w-100 mt-3">Agendar Cita</button>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <article class="card-medico">
+                <img src="images/medico4.jpg" alt="Dr. Andrés Cardozo" class="medico-img">
+                <div class="card-body">
+                  <h4>Dr. Andrés Cardozo</h4>
+                  <p>Especialista en Nutrición y Dietética Terapéutica.</p>
+                  <p>Un alimento sano alarga la vida.</p>
+                  <button class="btn btn-primary w-100 mt-3">Agendar Cita</button>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <article class="card-medico">
+                <img src="images/medico3.jpg" alt="Dra. Valeria Gómez" class="medico-img">
+                <div class="card-body">
+                  <h4>Dra. Valeria Gómez</h4>
+                  <p>Especialista en Neurología.</p>
+                  <p>Atención especializada y cercana.</p>
+                  <button class="btn btn-primary w-100 mt-3">Agendar Cita</button>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <article class="card-medico">
+                <img src="images/medico5.jpg" alt="Dr. Luis Torres" class="medico-img">
+                <div class="card-body">
+                  <h4>Dr. Luis Torres</h4>
+                  <p>Especialista en Cardiología.</p>
+                  <p>Prevención y cuidado del corazón.</p>
+                  <button class="btn btn-primary w-100 mt-3">Agendar Cita</button>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="registro-section" id="seccion3">
+    <div class="container registro-container">
+      <h1 class="text-center">Registro de Pacientes</h1>
+      <h2 class="text-center mb-4">Formulario de registro para la clínica</h2>
+      <p class="lead">
+          Registre sus datos para crear un usuario de la clínica. El correo electrónico será el dato de contacto
+          para confirmar el registro.
+      </p>
+  
+      <form id="formularioContacto" novalidate>
+          
+          <!-- Tipo de Identificación -->
+          <div class="mb-3">
+              <label for="identificacion" class="form-label">Tipo de Identificación:</label>
+              <select id="identificacion" name="tipo-identificacion" class="form-select" required>
+                  <option value="" disabled selected>Seleccione un tipo de identificación</option>
+                  <option value="cc">Cédula de Ciudadanía</option>
+                  <option value="ti">Tarjeta de Identidad</option>
+                  <option value="ce">Cédula de Extranjería</option>
+                  <option value="pas">Pasaporte</option>
+              </select>
+              <label class="text-danger form-text" id="errorTipoIdentificacion"></label><br>
+          </div>    
+          
+          <div class="mb-3">
+              <label for="numero-identificacion" class="form-label">Número de Identificación:</label>
+              <input type="text" id="numero-identificacion" name="numero-identificacion" class="form-control" placeholder="Número de identificación" required>
+              <label class="text-danger form-text" id="errorNumeroIdentificacion"></label><br>
+          </div>    
+          
+          <div class="mb-3">
+              <label for="nombres" class="form-label">Nombres:</label>
+              <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Nombres del usuario" required>
+              <label class="text-danger form-text" id="errorNombres"></label><br>
+          </div>    
+          
+          <div class="mb-3">
+              <label for="apellidos" class="form-label">Apellidos:</label>
+              <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos del usuario" required>
+              <label class="text-danger form-text" id="errorApellidos"></label><br>
+          </div>    
+          
+          <div class="mb-3">
+              <label for="correo-electronico" class="form-label">Correo Electrónico:</label>
+              <input type="email" id="correo-electronico" name="correo-electronico" class="form-control" placeholder="correo@ejemplo.com" required>
+              <label class="text-danger form-text" id="errorCorreo"></label><br>
+          </div>    
+
+            <div class="mb-3">
+              <label for="confirmar-correo" class="form-label">Confirmar Correo Electrónico:</label>
+              <input type="email" id="confirmar-correo" name="confirmar-correo" class="form-control" placeholder="Repita su correo electrónico" required>
+              <label class="text-danger form-text" id="errorConfirmarCorreo"></label><br>
+            </div>
+          
+          <fieldset class="mb-3">
+              <legend class="form-label">Género:</legend>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="femenino" name="genero" value="femenino" required>
+                  <label class="form-check-label" for="femenino">Femenino</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="masculino" name="genero" value="masculino">
+                  <label class="form-check-label" for="masculino">Masculino</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="otro" name="genero" value="otro">
+                  <label class="form-check-label" for="otro">Otro</label>
+              </div>
+              <label class="text-danger form-text" id="errorGenero"></label><br>
+          </fieldset>
+              
+          <div class="mb-3">
+              <label for="fecha-nacimiento" class="form-label">Fecha de Nacimiento:</label>
+              <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" class="form-control" required>
+          </div>    
+          
+          <div class="d-flex justify-content-start">
+              <button type="submit" id="btnRegistrar" class="btn btn-primary">Confirmar registro</button>
+          </div>
+    </form>  
+    </div>
+  </section>
+
+  <script src="logicamenu.js"></script>
+
+  <div class="container-fluid my-5">
+
+    <footer class="text-center text-lg-start" style="background-color: var(--azul-5);">
+      <div class="container social-footer d-flex justify-content-center py-5">
+        <a class="social-footer-link" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a class="social-footer-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a class="social-footer-link" href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>  
+      
+      <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2024 Copyright:
+        <a class="text-white" href="https://www.unicauca.edu.co/">Universidad del Cauca</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    
+  </div>
+  
+  
+</body>
+</html>
