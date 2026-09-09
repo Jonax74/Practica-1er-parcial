@@ -3,9 +3,24 @@ class GestionarPacientes {
     this.repoPaciente = repoPaciente;
   }
 
-  registrarPaciente(nombre, apellido) {
+  registrarPaciente(pacienteData, apellido) {
+    const datosPaciente = typeof pacienteData === 'string'
+      ? { nombres: pacienteData, apellidos: apellido || '' }
+      : pacienteData || {};
+
     const id = this.repoPaciente.siguienteId();
-    const paciente = new Paciente(id, nombre, apellido);
+    const paciente = new Paciente(
+      id,
+      datosPaciente.tipoIdentificacion || '',
+      datosPaciente.numeroIdentificacion || '',
+      datosPaciente.nombres || '',
+      datosPaciente.apellidos || '',
+      datosPaciente.correoElectronico || '',
+      datosPaciente.confirmarCorreo || '',
+      datosPaciente.genero || '',
+      datosPaciente.fechaNacimiento || ''
+    );
+
     this.repoPaciente.agregar(paciente);
     return paciente;
   }

@@ -24,7 +24,7 @@
         <img src="images/logus.png" alt="Logo del servicio médico" class="img-fluid">
         <div class="align-items-center">
               <div class="profile-info">
-                <h1>CLINICALA ULTIMA ESPERANZA</h1>
+                <h1>CLINICA LA ULTIMA ESPERANZA</h1>
                 <h3>Somos una clinica especializada en la atención de pacientes con enfermedades respiratorias y cardiovasculares.</h3>
                 <p>Sistema especializado en la gestión de pacientes y la atención médica integral.</p>              
                 <div class="social-icons" aria-label="Redes sociales de la clínica">
@@ -216,19 +216,19 @@
           
           <div class="mb-3">
               <label for="numero-identificacion" class="form-label">Número de Identificación:</label>
-              <input type="text" id="numero-identificacion" name="numero-identificacion" class="form-control" placeholder="Número de identificación" required>
+              <input type="text" id="numero-identificacion" name="numero-identificacion" class="form-control" placeholder="Número de identificación" required maxlength="10" inputmode="numeric" pattern="[0-9]*">
               <label class="text-danger form-text" id="errorNumeroIdentificacion"></label><br>
           </div>    
           
           <div class="mb-3">
               <label for="nombres" class="form-label">Nombres:</label>
-              <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Nombres del usuario" required>
+              <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Nombres del usuario" minlength="2" maxlength="50" required>
               <label class="text-danger form-text" id="errorNombres"></label><br>
           </div>    
           
           <div class="mb-3">
               <label for="apellidos" class="form-label">Apellidos:</label>
-              <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos del usuario" required>
+              <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos del usuario" minlength="2" maxlength="50" required>
               <label class="text-danger form-text" id="errorApellidos"></label><br>
           </div>    
           
@@ -247,11 +247,11 @@
           <fieldset class="mb-3">
               <legend class="form-label">Género:</legend>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" id="femenino" name="genero" value="femenino" required>
+                  <input class="form-check-input" type="radio" id="femenino" name="genero" value="femenino">
                   <label class="form-check-label" for="femenino">Femenino</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" id="masculino" name="genero" value="masculino">
+                  <input class="form-check-input" type="radio" id="masculino" name="genero" value="masculino" checked>
                   <label class="form-check-label" for="masculino">Masculino</label>
               </div>
               <div class="form-check form-check-inline">
@@ -264,6 +264,7 @@
           <div class="mb-3">
               <label for="fecha-nacimiento" class="form-label">Fecha de Nacimiento:</label>
               <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" class="form-control" required>
+              <label class="text-danger form-text" id="errorFechaNacimiento"></label><br>
           </div>    
           
           <div class="d-flex justify-content-start">

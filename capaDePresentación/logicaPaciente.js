@@ -1,33 +1,69 @@
-const formPaciente = document.getElementById("formPaciente");
+const formPaciente = document.getElementById("formPaciente") || document.getElementById("formularioContacto");
 const pacienteSelect = document.getElementById("pacienteSelect");
 const btnAgregarPaciente = document.getElementById("btnAgregarPaciente");
 
-// habilita/deshabilita el botón según la validez del formulario
-formPaciente.addEventListener("input", () => {
-  btnAgregarPaciente.disabled = !formPaciente.checkValidity();
+const obtenerDatosPacienteDesdeFormulario = () => ({
+  tipoIdentificacion: document.getElementById("identificacion")?.value || document.getElementById("tipoIdentificacionPaciente")?.value || "",
+  numeroIdentificacion: document.getElementById("numero-identificacion")?.value || document.getElementById("numeroIdentificacionPaciente")?.value || "",
+  nombres: document.getElementById("nombres")?.value || document.getElementById("nombresPaciente")?.value || "",
+  apellidos: document.getElementById("apellidos")?.value || document.getElementById("apellidosPaciente")?.value || "",
+  correoElectronico: document.getElementById("correo-electronico")?.value || document.getElementById("correoElectronicoPaciente")?.value || "",
+  confirmarCorreo: document.getElementById("confirmar-correo")?.value || document.getElementById("confirmarCorreoPaciente")?.value || "",
+  genero: document.querySelector('input[name="genero"]:checked')?.value || document.getElementById("generoPaciente")?.value || "",
+  fechaNacimiento: document.getElementById("fecha-nacimiento")?.value || document.getElementById("fechaNacimientoPaciente")?.value || ""
 });
 
-formPaciente.addEventListener("submit", (e) => {
-  e.preventDefault();
-  if (!validarFormularioPaciente()) {
-    return;
+const actualizarEstadoBotonPaciente = () => {
+  const formularioValido = typeof validarFormulario === 'function' && formPaciente?.id === 'formularioContacto'
+    ? validarFormulario()
+    : formPaciente?.checkValidity() ?? false;
+
+  if (btnAgregarPaciente) {
+    btnAgregarPaciente.disabled = !formularioValido;
   }
-  const nombres = document.getElementById("nombresPaciente").value; 
-  const apellidos = document.getElementById("apellidosPaciente").value;
+};
 
-  const paciente = gestionarPacientes.registrarPaciente(nombres, apellidos);
-  console.log("Paciente registrado:", paciente);
-  // actualizar select
-  const option = document.createElement("option");
-  option.value = paciente.id;
-  option.textContent = `${paciente.nombres} ${paciente.apellidos}`;
-  pacienteSelect.appendChild(option);
+if (formPaciente) {
+  formPaciente.addEventListener("input", actualizarEstadoBotonPaciente);
+  formPaciente.addEventListener("change", actualizarEstadoBotonPaciente);
 
-  formPaciente.reset();
-  limpiarMensajesValidacion(formPaciente);
-  btnAgregarPaciente.disabled = true;
+  formPaciente.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  mostrarNotificacion(`Paciente ${paciente.nombres} ${paciente.apellidos} registrado con éxito`);
-});
+    const validacionCorrecta = formPaciente.id === "formPaciente"
+      ? validarFormularioPaciente()
+      : validarFormulario();
+
+    if (!validacionCorrecta) {
+      return;
+    }
+
+    const datosPaciente = obtenerDatosPacienteDesdeFormulario();
+    const paciente = gestionarPacientes.registrarPaciente(datosPaciente);
+    console.log("Paciente registrado:", paciente);
+
+    if (pacienteSelect) {
+      const option = document.createElement("option");
+      option.value = paciente.id;
+      option.textContent = `${paciente.nombres} ${paciente.apellidos}`;
+      pacienteSelect.appendChild(option);
+    }
+
+    formPaciente.reset();
+    if (typeof limpiarMensajesValidacion === 'function') {
+      limpiarMensajesValidacion(formPaciente);
+    }
+
+    if (btnAgregarPaciente) {
+      btnAgregarPaciente.disabled = true;
+    }
+
+    if (typeof mostrarNotificacion === 'function') {
+      mostrarNotificacion(`Paciente ${paciente.nombres} ${paciente.apellidos} registrado con éxito`);
+    } else {
+      console.log(`Paciente ${paciente.nombres} ${paciente.apellidos} registrado con éxito`);
+    }
+  });
+}
 
 

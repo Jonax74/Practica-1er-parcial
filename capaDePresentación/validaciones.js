@@ -58,20 +58,53 @@ function validarFormulario() {
     const formulario = document.getElementById('formularioContacto');
     const correo = document.getElementById('correo-electronico');
     const confirmarCorreo = document.getElementById('confirmar-correo');
+    const numeroIdentificacion = document.getElementById('numero-identificacion');
+    const nombres = document.getElementById('nombres');
+    const apellidos = document.getElementById('apellidos');
+    const fechaNacimiento = document.getElementById('fecha-nacimiento');
+    const errorNumeroIdentificacion = document.getElementById('errorNumeroIdentificacion');
+    const errorNombres = document.getElementById('errorNombres');
+    const errorApellidos = document.getElementById('errorApellidos');
+    const errorFechaNacimiento = document.getElementById('errorFechaNacimiento');
+
     const camposConMensaje = {
         identificacion: 'errorTipoIdentificacion',
         'numero-identificacion': 'errorNumeroIdentificacion',
         nombres: 'errorNombres',
         apellidos: 'errorApellidos',
-        'fecha-nacimiento': null
+        'fecha-nacimiento': 'errorFechaNacimiento'
     };
 
     Object.entries(camposConMensaje).forEach(([id, errorId]) => {
         const campo = document.getElementById(id);
-        if (errorId) {
-            document.getElementById(errorId).textContent = campo.checkValidity() ? '' : 'Este campo es obligatorio.';
+        if (errorId && campo) {
+            const errorElement = document.getElementById(errorId);
+            if (campo.id === 'nombres' || campo.id === 'apellidos') {
+                const longitudValida = validarLongitud(campo, errorElement, 2, 50, 'Debe tener entre 2 y 50 caracteres.');
+                if (!longitudValida) {
+                    return;
+                }
+            } else if (campo.id === 'fecha-nacimiento') {
+                const hoy = new Date();
+                const fechaIngresada = new Date(campo.value + 'T00:00:00');
+                const fechaValida = campo.value !== '' && fechaIngresada <= hoy;
+                errorElement.textContent = fechaValida ? '' : 'La fecha de nacimiento no puede ser mayor a la actual.';
+                return;
+            } else {
+                errorElement.textContent = campo.checkValidity() ? '' : 'Este campo es obligatorio.';
+            }
         }
     });
+
+    const cedulaValida = numeroIdentificacion.value.trim() !== '' && /^\d{1,10}$/.test(numeroIdentificacion.value.trim());
+    errorNumeroIdentificacion.textContent = numeroIdentificacion.value.trim() === ''
+        ? 'Este campo es obligatorio.'
+        : !cedulaValida
+            ? 'La cédula debe contener solo números y máximo 10 caracteres.'
+            : '';
+
+    const nombresValidos = validarLongitud(nombres, errorNombres, 2, 50, 'El nombre debe tener entre 2 y 50 caracteres.');
+    const apellidosValidos = validarLongitud(apellidos, errorApellidos, 2, 50, 'El apellido debe tener entre 2 y 50 caracteres.');
 
     const correoValido = validarCorreo(correo, document.getElementById('errorCorreo'), 'Ingrese un correo electrónico válido.');
     const errorConfirmarCorreo = document.getElementById('errorConfirmarCorreo');
@@ -86,6 +119,13 @@ function validarFormulario() {
         errorConfirmarCorreo.textContent = 'Los correos electrónicos deben coincidir.';
     }
 
+    const fechaValida = fechaNacimiento.value !== '' && new Date(fechaNacimiento.value + 'T00:00:00') <= new Date();
+    errorFechaNacimiento.textContent = fechaNacimiento.value === ''
+        ? 'La fecha de nacimiento es obligatoria.'
+        : !fechaValida
+            ? 'La fecha de nacimiento no puede ser mayor a la actual.'
+            : '';
+
     const camposObligatoriosValidos = [...formulario.querySelectorAll('input[required]:not([name="genero"]), select[required]')]
         .every((campo) => campo.checkValidity());
     const generoValido = validarGenero(
@@ -94,14 +134,24 @@ function validarFormulario() {
         'Seleccione un género.'
     );
 
-    return camposObligatoriosValidos && correoValido && confirmarCorreoValido && generoValido;
+    return camposObligatoriosValidos && cedulaValida && nombresValidos && apellidosValidos && correoValido && confirmarCorreoValido && generoValido && fechaValida;
 }
 
 function configurarValidacionFormularioContacto() {
     const formulario = document.getElementById('formularioContacto');
     if (!formulario) return;
 
+    const numeroIdentificacion = document.getElementById('numero-identificacion');
+    if (numeroIdentificacion) {
+        numeroIdentificacion.addEventListener('input', () => {
+            numeroIdentificacion.value = numeroIdentificacion.value.replace(/\D/g, '').slice(0, 10);
+            validarFormulario();
+        });
+    }
+
     formulario.querySelectorAll('input, select').forEach((campo) => {
+        campo.addEventListener('input', () => validarFormulario());
+        campo.addEventListener('change', () => validarFormulario());
         campo.addEventListener('blur', () => validarFormulario());
     });
 
@@ -205,12 +255,33 @@ function validarFormularioPaciente() {
 }
 
 function validarCampoPaciente(campo) {
-    const errorElement = document.getElementById(campo.id === 'nombresPaciente' ? 'errorNombresPaciente' : 'errorApellidosPaciente');
-    const mensaje = campo.id === 'nombresPaciente'
-        ? 'El nombre debe tener entre 1 y 20 caracteres.'
-        : 'El apellido debe tener entre 1 y 20 caracteres.';
+    const errorElement = campo.id === 'nombres' ? document.getElementById('errorNombres') :
+        campo.id === 'apellidos' ? document.getElementById('errorApellidos') :
+        campo.id === 'numero-identificacion' ? document.getElementById('errorNumeroIdentificacion') :
+        campo.id === 'correo-electronico' ? document.getElementById('errorCorreo') :
+        campo.id === 'confirmar-correo' ? document.getElementById('errorConfirmarCorreo') :
+        campo.id === 'fecha-nacimiento' ? document.getElementById('errorFechaNacimiento') : null;
 
-    validarLongitud(campo, errorElement, 1, 20, mensaje);
+    if (!errorElement) return;
+
+    if (campo.id === 'nombres' || campo.id === 'apellidos') {
+        validarLongitud(campo, errorElement, 2, 50, campo.id === 'nombres' ? 'El nombre debe tener entre 2 y 50 caracteres.' : 'El apellido debe tener entre 2 y 50 caracteres.');
+    } else if (campo.id === 'numero-identificacion') {
+        const valor = campo.value.trim();
+        errorElement.textContent = valor === '' ? 'Este campo es obligatorio.' : !/^\d{1,10}$/.test(valor) ? 'La cédula debe contener solo números y máximo 10 caracteres.' : '';
+    } else if (campo.id === 'correo-electronico') {
+        validarCorreo(campo, errorElement, 'Ingrese un correo electrónico válido.');
+    } else if (campo.id === 'confirmar-correo') {
+        const correo = document.getElementById('correo-electronico');
+        const obligatorio = validarCampoObligatorio(campo, errorElement, 'Confirme su correo electrónico.');
+        if (obligatorio && correo.value !== campo.value) {
+            errorElement.textContent = 'Los correos electrónicos deben coincidir.';
+        }
+    } else if (campo.id === 'fecha-nacimiento') {
+        const valor = campo.value;
+        const fechaValida = valor !== '' && new Date(valor + 'T00:00:00') <= new Date();
+        errorElement.textContent = valor === '' ? 'La fecha de nacimiento es obligatoria.' : !fechaValida ? 'La fecha de nacimiento no puede ser mayor a la actual.' : '';
+    }
 }
 
 function validarFormularioCita() {
