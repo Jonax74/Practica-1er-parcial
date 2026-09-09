@@ -14,6 +14,10 @@
       background: linear-gradient(90deg, var(--azul-1) 0%, var(--azul-2) 35%, var(--azul-4) 100%);
       color: white;
     }
+
+    header > .container {
+      width: 100%;
+    }
     body {
       overflow-x: hidden; /* Evita el desbordamiento horizontal */
       background: #ffffff;
@@ -44,6 +48,10 @@
       background: transparent;
       padding: 18px 0 12px 0;
       min-height: 120px;
+    }
+
+    .navbar > .container {
+      width: 100%;
     }
     .logo img {
       width: 130px;
@@ -180,6 +188,12 @@
       padding-bottom: 50px;
     }
 
+    .medicos-section .row > aside,
+    .medicos-section .row > div,
+    .medicos-section .row .row > div {
+      min-width: 0;
+    }
+
     .especialidades-barra {
       background: #f8fbff;
       border: 1px solid rgba(37, 91, 172, 0.2);
@@ -205,6 +219,7 @@
       margin-bottom: 8px;
       font-size: 1.05rem;
       text-align: left;
+      overflow-wrap: anywhere;
     }
 
     .especialidad:hover,
@@ -227,6 +242,7 @@
       color: var(--texto);
       line-height: 1.7;
       font-size: 1rem;
+      overflow-wrap: anywhere;
     }
 
     .card-medico {
@@ -264,12 +280,14 @@
       font-weight: 700;
       margin-bottom: 12px;
       min-height: 52px;
+      overflow-wrap: anywhere;
     }
 
     .card-medico p {
       color: var(--texto);
       margin-bottom: 8px;
       line-height: 1.5;
+      overflow-wrap: anywhere;
     }
 
     .card-medico .btn-primary {
@@ -281,10 +299,68 @@
     }
 
     @media (max-width: 575.98px) {
+      .logo {
+        flex-direction: column;
+        gap: 8px;
+        padding: 14px 12px 18px;
+      }
+
+      .logo img {
+        width: 100px;
+        height: 100px;
+        min-width: 100px;
+      }
+
+      .profile-info h1 {
+        font-size: 2rem;
+      }
+
+      .profile-info h3 {
+        font-size: 1.05rem;
+      }
+
       .especialidades-barra,
       .especialidad-detalle,
       .card-medico {
         width: 100%;
+      }
+
+      .especialidades-barra {
+        padding: 16px 12px;
+      }
+    }
+
+    @media (min-width: 576px) and (max-width: 767.98px) {
+      .especialidades-barra {
+        padding: 16px 8px;
+      }
+
+      .especialidad {
+        padding-left: 6px;
+        padding-right: 6px;
+        font-size: 0.95rem;
+      }
+
+      .descripcion-especialidad p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .medico-img {
+        height: 180px;
+      }
+
+      .card-medico .card-body {
+        padding: 16px 14px 14px;
+      }
+
+      .card-medico h4 {
+        font-size: 1rem;
+      }
+
+      .card-medico p {
+        font-size: 0.9rem;
       }
     }
 
