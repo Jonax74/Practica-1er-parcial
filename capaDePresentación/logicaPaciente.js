@@ -15,7 +15,7 @@ const obtenerDatosPacienteDesdeFormulario = () => ({
 
 const actualizarEstadoBotonPaciente = () => {
   const formularioValido = typeof validarFormulario === 'function' && formPaciente?.id === 'formularioContacto'
-    ? validarFormulario()
+    ? validarFormulario(false)
     : formPaciente?.checkValidity() ?? false;
 
   if (btnAgregarPaciente) {
